@@ -54,7 +54,7 @@ public class Cliente implements Serializable { //serializable recomend
 	private Date createAt;
 	
 	
-	
+	private String foto;
 	
 
 	public Long getId() {
@@ -95,6 +95,16 @@ public class Cliente implements Serializable { //serializable recomend
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
+	}
+
+	
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public static long getSerialversionuid() {
