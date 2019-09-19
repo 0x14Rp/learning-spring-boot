@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,7 +28,7 @@ public class Cliente implements Serializable { //serializable recomend
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	
+
 	
 	//Validadiones
 	
@@ -53,8 +53,17 @@ public class Cliente implements Serializable { //serializable recomend
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date createAt;
 	
+	 @Column(name = "updated_at")
 	
-	private String foto;
+	    private Date updatedAt;
+	
+	 @PreUpdate
+	    public void preUpdate() {
+	        updatedAt = new Date();
+	    }
+
+	
+		private String foto;
 	
 
 	public Long getId() {
@@ -98,6 +107,15 @@ public class Cliente implements Serializable { //serializable recomend
 	}
 
 	
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+ 
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+	
+
 	
 	public String getFoto() {
 		return foto;
